@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+
+{%  block content %}
+
+
+    <div class="container">
+        <form name="register" action="{{ url_for('register') }}" method="POST" novalidate>
+            <fieldset class="form-group">
+                <legend>{{ registerformtitle }}</legend>
+                {{ registerform.hidden_tag() }}
+
+            <p>
+                {{ registerform.first_name.label }}<br>
+                {{ registerform.first_name( size=20 ) }}
+                {% for error in registerform.first_name.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ registerform.last_name.label }}<br>
+                {{ registerform.last_name( size=20 ) }}
+                {% for error in registerform.last_name.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ registerform.email.label }}<br>
+                {{ registerform.email( size=20 ) }}
+                {% for error in registerform.email.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ registerform.password.label }}<br>
+                {{ registerform.password( size=20 ) }}
+                {% for error in registerform.password.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ registerform.conform_password.label }}<br>
+                {{ registerform.conform_password( size=20 ) }}
+                {% for error in registerform.conform_password.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ registerform.submit() }}
+            </p>
+
+
+
+
+            </fieldset>
+            
+
+            <!-- <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+            <br>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+            <br>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <br class="clear">
+            <input class="btn-submit" type="submit" name="submit"> -->
+        </form>
+    </div>
+
+{% endblock %}

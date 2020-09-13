@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+
+{%  block content %}
+
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            
+            <form name="login" action="{{ url_for('login') }} " method="POST" novalidate>
+                <fieldset class="form-group">
+                    <legend>{{ loginformtitle }}</legend>
+                    {{ loginform.hidden_tag() }}
+                <p>
+                    {{ loginform.email.label }}<br>
+                    {{ loginform.email( size=35 ) }}
+                    {% for error in loginform.email.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </p>
+
+                <p>
+                    {{ loginform.password.label }}<br>
+                    {{ loginform.password( size=35 ) }}
+                    {% for error in loginform.password.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </p>
+
+                <p>
+                    {{ loginform.remembar_me.label }}<br>
+                    {{ loginform.remembar_me() }}
+                </p>
+
+                <p>
+                    {{ loginform.submit() }}<br>
+                    
+                </p>
+
+
+                </fieldset>
+                <!-- <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+                <br>
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <br class="clear">
+                <input class="btn-submit" type="submit" name="submit" value="Login"> -->
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}
